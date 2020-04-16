@@ -1,0 +1,29 @@
+name: 'Terraform Workspace Create'
+description: 'Create Terraform workspaces in AWS S3'
+inputs:
+  tf-workspace-version:
+    description: 'Terraform Version'
+    required: true
+  tf-workspace-list:
+    description: 'List of workspaces to create'
+    required: true
+  tf-workspace-s3-bucket:
+    description: 'Name of S3 bucket backend'
+    required: true
+  tf-workspace-s3-key:
+    description: 'S3 Bucket key for workspace'
+    required: true
+  tf-workspace-dynamodb-table:
+    description: 'DynamoDB table used for locking'
+    required: true
+  tf-assume-role-arn:
+    description: 'AWS IAM Role to assume (optional)'
+  tf-external-id:
+    description: 'External ID to use when assuming roles (optional)'
+  debug:
+    description: 'Enable debugging'
+    default: false
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
